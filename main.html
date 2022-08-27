@@ -296,6 +296,7 @@
                 'userId': 'me',
                 'labelIds': 'INBOX',
                 'maxResults': 10
+                // Add Number of Messages to Displayed here.
             });
 
             request.execute(function (response) {
@@ -339,19 +340,7 @@
             var forward_subject = 'Fwd: ' + getHeader(message.payload.headers, 'Subject').replace(/\"/g, '&quot;');
             var forward_to = document.getElementById('forward-to');
 
-            $.ajax({
-                type: "POST",
-                url: "http://127.0.0.1:8000/basic/add_data/",
-                data: item = {
-                    id: sub,
-                    content: 'Some Content',
-
-                },
-                success: function (newItem) {
-                    alert(JSON.stringify(newItem));
-                    alert('Saved successfully');
-                },
-            });
+           
             $('body').append(
                 '<div class="modal fade" id="message-modal-' + message.id +
                 '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
